@@ -1,0 +1,14 @@
+{
+  "name": "hashirax-gaming",
+  "version": "1.0.0",
+  "description": "Wune Guide - Complete 5-Part Series",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static HTML build - no build step required'",
+    "lint": "echo 'No linter configured for static HTML'"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.1.1"
+  }
+}
