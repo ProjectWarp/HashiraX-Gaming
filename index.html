@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your YouTube Channel - Videos & Support</title>
+    <title>Wune Guide - Complete Tutorial Series</title>
     <script src="https://unpkg.com/@paypal/react-paypal-js@latest/dist/iife/paypal-js.min.js"></script>
     <style>
         * {
@@ -102,18 +102,6 @@
             box-shadow: 0 12px 35px rgba(24,119,242,0.4);
         }
 
-        .paypal-btn {
-            background: linear-gradient(45deg, #003087, #0070ba);
-            color: white;
-            padding: 18px 35px;
-            font-size: 1.2em;
-        }
-
-        .paypal-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0,48,135,0.4);
-        }
-
         .videos-section {
             background: rgba(255,255,255,0.95);
             border-radius: 20px;
@@ -187,24 +175,10 @@
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-            
-            .social-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-            
-            .videos-grid {
-                grid-template-columns: 1fr;
-            }
+            h1 { font-size: 2em; }
+            .social-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; justify-content: center; }
+            .videos-grid { grid-template-columns: 1fr; }
         }
 
         .pulse {
@@ -221,11 +195,10 @@
 <body>
     <div class="container">
         <!-- Header -->
-        <header>
-            <h1>🎥 HashiraX Gaming</h1>
+        <h1>🎥 HashiraX Gaming </h1>
             <p class="subtitle">Watch my latest videos and support my content creation!</p>
-            
-            <!-- Social Follow Buttons -->
+                        
+            <!-- Social Follow Buttons - UPDATE THESE LINKS -->
             <div class="social-buttons">
                 <a href="https://youtube.com/@HashiraXGaming?sub_confirmation=1" 
                    class="btn youtube-btn pulse" 
@@ -247,60 +220,56 @@
 
         <!-- Videos Section -->
         <section class="videos-section">
-            <h2 class="section-title">Featured Videos</h2>
-            <div class="videos-grid" id="videosGrid">
-                <!-- Manual videos will be displayed here -->
-            </div>
+            <h2 class="section-title">🎥 Complete Wune Guide Series</h2>
+            <div class="videos-grid" id="videosGrid"></div>
         </section>
 
         <!-- Support Section -->
         <section class="support-section">
-            <h2 class="support-title">💖 Support My Content</h2>
+            <h2 class="support-title">💖 Support the Wune Guide</h2>
             <p style="font-size: 1.2em; margin-bottom: 30px;">
-                Love my videos? Buy me a coffee or send a tip! ☕
+                Loved the guide? Buy me a coffee to make more tutorials! ☕
             </p>
-            
-            <!-- PayPal Button -->
-            <div id="paypal-button-container" class="paypal-container"></div>
+            <div id="paypal-button-container"></div>
         </section>
     </div>
 
     <script>
-        // 🔥 MANUAL VIDEO INPUT - ADD YOUR VIDEOS HERE
+        // 🔥 FINAL VERSION - YOUR WUNE GUIDE VIDEOS WITH MEDIAFIRE THUMBNAILS
         const MANUAL_VIDEOS = [
-    {
-        id: 'zuTh6qZ2574',  // Replace with your YouTube video ID
-        title: '📖 Wune Guide Part 1',
-        description: 'Complete beginner guide to Wune - Part 1!',
-        thumbnail: 'https://filedn.eu/l/8d4i0b1av13aiqi/wune_guide_part_1.png'  // ✅ MediaFire Direct
-    },
-    {
-        id: 'T6ahofjH4d0',
-        title: '📖 Wune Guide Part 2', 
-        description: 'Advanced techniques - Part 2 of 5!',
-        thumbnail: 'https://filedn.eu/l/196bi31f3fixtbb/wune_guide_part_2.png'  // ✅ MediaFire Direct
-    },
-    {
-        id: 'OaNPAEHxTp8',
-        title: '📖 Wune Guide Part 3',
-        description: 'Master level strategies - Part 3!',
-        thumbnail: 'https://filedn.eu/l/8d4i0b1av13aiqi/wune_guide_part_3.png'  // ✅ MediaFire Direct
-    },
-    {
-        id: '1ok381bWmk8',
-        title: '📖 Wune Guide Part 4',
-        description: 'Pro tips and secrets - Part 4!',
-        thumbnail: 'https://filedn.eu/l/82h0zc33xz67zmy/WUNE_GUIDE_PART_4.png'  // ✅ MediaFire Direct
-    },
-    {
-        id: 'netZV1XoLMM',
-        title: '📖 Wune Guide Part 5 (Final)',
-        description: 'Ultimate guide complete - Part 5!',
-        thumbnail: 'https://filedn.eu/l/c3zc6r33wxrep57/wune_guide_part_5.png'  // ✅ MediaFire Direct
-    }
-];
+            {
+                id: 'zuTh6qZ2574',  // ← REPLACE WITH YOUR ACTUAL VIDEO ID
+                title: '📖 Wune Guide Part 1',
+                description: 'Complete beginner guide to Wune - Part 1!',
+                thumbnail: 'https://filedn.eu/l/8d4i0b1av13aiqi/wune_guide_part_1.png'
+            },
+            {
+                id: 'T6ahofjH4d0',  // ← REPLACE WITH YOUR ACTUAL VIDEO ID
+                title: '📖 Wune Guide Part 2', 
+                description: 'Advanced techniques - Part 2 of 5!',
+                thumbnail: 'https://filedn.eu/l/196bi31f3fixtbb/wune_guide_part_2.png'
+            },
+            {
+                id: 'OaNPAEHxTp8',  // ← REPLACE WITH YOUR ACTUAL VIDEO ID
+                title: '📖 Wune Guide Part 3',
+                description: 'Master level strategies - Part 3!',
+                thumbnail: 'https://filedn.eu/l/8d4i0b1av13aiqi/wune_guide_part_3.png'
+            },
+            {
+                id: '1ok381bWmk8',  // ← REPLACE WITH YOUR ACTUAL VIDEO ID
+                title: '📖 Wune Guide Part 4',
+                description: 'Pro tips and secrets - Part 4!',
+                thumbnail: 'https://filedn.eu/l/82h0zc33xz67zmy/WUNE_GUIDE_PART_4.png'
+            },
+            {
+                id: 'netZV1XoLMM',  // ← REPLACE WITH YOUR ACTUAL VIDEO ID
+                title: '📖 Wune Guide Part 5 (Final)',
+                description: 'Ultimate guide complete - Part 5!',
+                thumbnail: 'https://filedn.eu/l/c3zc6r33wxrep57/wune_guide_part_5.png'
+            }
+        ];
 
-        // Function to display manual videos
+        // Display videos
         function displayManualVideos() {
             const grid = document.getElementById('videosGrid');
             grid.innerHTML = '';
@@ -316,7 +285,7 @@
             card.className = 'video-card';
             
             card.innerHTML = `
-                <img src="${video.thumbnail}" alt="${video.title}" class="video-thumbnail">
+                <img src="${video.thumbnail}" alt="${video.title}" class="video-thumbnail" loading="lazy">
                 <div class="video-info">
                     <h3 class="video-title">${video.title}</h3>
                     <p class="video-desc">${video.description}</p>
@@ -328,39 +297,33 @@
                     </a>
                 </div>
             `;
-            
             return card;
         }
 
-        // Initialize PayPal
+        // PayPal Button
         function initPayPalButton() {
             paypal.Buttons({
                 createOrder: function(data, actions) {
                     return actions.order.create({
                         purchase_units: [{
-                            amount: {
-                                value: '5.00' // Default tip amount - change as needed
-                            }
+                            amount: { value: '5.00' }
                         }]
                     });
                 },
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(function(details) {
-                        alert('Thank you ' + details.payer.name.given_name + '! Your tip has been received! 🙏');
+                        alert('Thank you ' + details.payer.name.given_name + '! Your support means everything! 🙏');
                     });
                 },
                 onError: function(err) {
-                    console.error('PayPal error:', err);
                     alert('Payment failed. Please try again.');
                 }
             }).render('#paypal-button-container');
         }
 
-        // Initialize everything when page loads
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             displayManualVideos();
-            
-            // Initialize PayPal after a short delay
             setTimeout(initPayPalButton, 1000);
         });
     </script>
