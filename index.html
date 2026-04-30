@@ -29,24 +29,28 @@
         .tiktok-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(255,0,80,0.4); }
         .facebook-btn { background: #1877F2; color: white; }
         .facebook-btn:hover { background: #166FE5; transform: translateY(-3px); box-shadow: 0 12px 35px rgba(24,119,242,0.4); }
-        /* DIRECT PAYPAL SEND */
+        
+        /* PAYPAL */
         .paypal-send { 
-            background: linear-gradient(45deg, #003087, #0070ba) !important; 
-            color: white !important; font-size: 1.2em !important; padding: 20px 40px !important; 
+            background: linear-gradient(45deg, #003087, #0070ba) !important; color: white !important; 
+            font-size: 1.1em !important; padding: 18px 35px !important; 
         }
-        .paypal-send:hover { 
-            transform: translateY(-5px) !important; box-shadow: 0 15px 40px rgba(0,48,135,0.6) !important; 
+        .paypal-send:hover { transform: translateY(-3px) !important; box-shadow: 0 12px 35px rgba(0,48,135,0.6) !important; }
+        
+        /* GCASH */
+        .gcash-send { 
+            background: linear-gradient(45deg, #00A651, #00D467) !important; color: white !important; 
+            font-size: 1.1em !important; padding: 18px 35px !important; 
         }
+        .gcash-send:hover { transform: translateY(-3px) !important; box-shadow: 0 12px 35px rgba(0,166,81,0.6) !important; }
+        
         .videos-section { 
             background: rgba(255,255,255,0.95); border-radius: 20px; padding: 40px; margin-bottom: 40px; 
             box-shadow: 0 20px 60px rgba(0,0,0,0.2); backdrop-filter: blur(10px); 
         }
         .section-title { font-size: 2.5em; text-align: center; margin-bottom: 40px; color: #333; }
         .videos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .video-card { 
-            background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); 
-            transition: all 0.3s ease; 
-        }
+        .video-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: all 0.3s ease; }
         .video-card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
         .video-thumbnail { width: 100%; height: 200px; object-fit: cover; }
         .video-info { padding: 20px; }
@@ -57,15 +61,20 @@
             text-align: center; color: white; box-shadow: 0 20px 60px rgba(0,0,0,0.2); 
         }
         .support-title { font-size: 2.5em; margin-bottom: 20px; }
-        .tip-section { 
-            background: rgba(255,255,255,0.15); border-radius: 15px; padding: 25px; 
-            margin: 20px 0; backdrop-filter: blur(10px); 
+        .tip-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 20px; max-width: 800px; margin: 0 auto 30px; 
+        }
+        .tip-grid .btn { width: 100%; justify-content: center; }
+        .gcash-info, .paypal-info { 
+            background: rgba(255,255,255,0.15); border-radius: 12px; padding: 15px; 
+            margin: 15px 0; font-size: 0.95em; backdrop-filter: blur(10px); 
         }
         @media (max-width: 768px) { 
             h1 { font-size: 2em; } 
             .social-buttons { flex-direction: column; align-items: center; } 
             .btn { width: 100%; max-width: 300px; justify-content: center; } 
-            .videos-grid { grid-template-columns: 1fr; } 
+            .videos-grid, .tip-grid { grid-template-columns: 1fr; } 
         }
         .pulse { animation: pulse 2s infinite; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
@@ -75,13 +84,13 @@
     <div class="container">
         <header>
             <h1>📖 Wune Guide</h1>
-            <p class="subtitle">Complete 5-Part Masterclass - Beginner to Pro!</p>
+            <p class="subtitle">Complete 5-Part Masterclass - PH Gaming 🇵🇭</p>
             
-            <!-- UPDATE YOUR SOCIAL LINKS -->
+            <!-- UPDATE SOCIAL -->
             <div class="social-buttons">
                 <a href="https://youtube.com/@HashiraXGaming?sub_confirmation=1" 
                    class="btn youtube-btn pulse" target="_blank">
-                    📺 Subscribe YouTube
+                    📺 YouTube Subscribe
                 </a>
                 <a href="https://tiktok.com/@hashiraxgaming" 
                    class="btn tiktok-btn" target="_blank">
@@ -95,79 +104,68 @@
         </header>
 
         <section class="videos-section">
-            <h2 class="section-title">🎥 Wune Guide Series (5 Parts)</h2>
+            <h2 class="section-title">🎮 Wune Guide Series (5 Parts)</h2>
             <div class="videos-grid" id="videosGrid"></div>
         </section>
 
-        <!-- DIRECT PAYPAL SEND MONEY -->
+        <!-- GCASH + PAYPAL TIPS -->
         <section class="support-section">
-            <h2 class="support-title">💖 Quick Tip?</h2>
-            <div class="tip-section">
-                <p style="font-size: 1.1em; margin-bottom: 25px;">
-                    Loved the guide? Send a tip via PayPal! 
-                    <strong>Any amount helps! 🙏</strong>
-                </p>
-                
-                <!-- REPLACE yourpaypal@email.com WITH YOUR EMAIL -->
-                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                    <a href="https://www.paypal.com/paypalme/demonlordstream/3" 
-                       class="btn paypal-send pulse" target="_blank">
-                        ☕ $3 Tip
-                    </a>
-                    <a href="https://www.paypal.com/paypalme/demonlordstream/5" 
-                       class="btn paypal-send" target="_blank">
-                        💰 $5 Tip
-                    </a>
-                    <a href="https://www.paypal.com/paypalme/demonlordstream/10" 
-                       class="btn paypal-send" target="_blank">
-                        🚀 $10 Tip
-                    </a>
-                </div>
-                
-                <p style="font-size: 0.9em; opacity: 0.9; margin-top: 20px;">
-                    Or send any amount → paypal.me/demonlordstream
-                </p>
+            <h2 class="support-title">💖 Support 🇵🇭</h2>
+            <p style="font-size: 1.2em; margin-bottom: 30px;">
+                Enjoyed the guide? Send load/tip! Any amount helps! 🙏
+            </p>
+
+            <!-- GCASH -->
+            <div class="gcash-info">
+                <strong>📱 GCash:</strong> <code>09082707836</code><br>
+                <small>Save number → GCash → Send Money → Amount</small>
+            </div>
+
+            <!-- GCASH BUTTONS -->
+            <div class="tip-grid">
+                <a href="#" onclick="copyGcash('09082707836')" class="btn gcash-send pulse">
+                    📲 Copy GCash #
+                </a>
+                <a href="#" onclick="copyGcash('09082707836')" class="btn gcash-send">
+                    💸 ₱50 Load
+                </a>
+                <a href="#" onclick="copyGcash('09082707836')" class="btn gcash-send">
+                    💰 ₱100 Tip
+                </a>
+            </div>
+
+            <!-- PAYPAL -->
+            <div class="paypal-info">
+                <strong>💳 PayPal:</strong> paypal.me/yourpaypal<br>
+                <small>International / Crypto friendly</small>
+            </div>
+
+            <!-- PAYPAL BUTTONS -->
+            <div class="tip-grid">
+                <a href="https://www.paypal.com/paypalme/demonlordstream/3" 
+                   class="btn paypal-send pulse" target="_blank">
+                    ☕ $3 USD
+                </a>
+                <a href="https://www.paypal.com/paypalme/demonlordstream/5" 
+                   class="btn paypal-send" target="_blank">
+                    💰 $5 USD
+                </a>
+                <a href="https://www.paypal.com/paypalme/demonlordstream/10" 
+                   class="btn paypal-send" target="_blank">
+                    🚀 $10 USD
+                </a>
             </div>
         </section>
     </div>
 
     <script>
+        // YOUR VIDEOS
         const MANUAL_VIDEOS = [
-            {
-                id: 'zuTh6qZ2574',
-                title: '📖 Wune Guide Part 1',
-                description: 'Complete beginner guide to Wune - Part 1!',
-                thumbnail: 'https://filedn.eu/l/8d4i0b1av13aiqi/wune_guide_part_1.png',
-                fallback: 'https://img.youtube.com/vi/zuTh6qZ2574/mqdefault.jpg'
-            },
-            {
-                id: 'T6ahofjH4d0',
-                title: '📖 Wune Guide Part 2', 
-                description: 'Advanced techniques - Part 2 of 5!',
-                thumbnail: 'https://filedn.eu/l/196bi31f3fixtbb/wune_guide_part_2.png',
-                fallback: 'https://img.youtube.com/vi/T6ahofjH4d0/mqdefault.jpg'
-            },
-            {
-                id: 'OaNPAEHxTp8',
-                title: '📖 Wune Guide Part 3',
-                description: 'Master level strategies - Part 3!',
-                thumbnail: 'https://filedn.eu/l/8d4i0b1av13aiqi/wune_guide_part_3.png',
-                fallback: 'https://img.youtube.com/vi/OaNPAEHxTp8/mqdefault.jpg'
-            },
-            {
-                id: '1ok381bWmk8',
-                title: '📖 Wune Guide Part 4',
-                description: 'Pro tips and secrets - Part 4!',
-                thumbnail: 'https://filedn.eu/l/82h0zc33xz67zmy/WUNE_GUIDE_PART_4.png',
-                fallback: 'https://img.youtube.com/vi/1ok381bWmk8/mqdefault.jpg'
-            },
-            {
-                id: 'netZV1XoLMM',
-                title: '📖 Wune Guide Part 5 (Final)',
-                description: 'Ultimate guide complete - Part 5!',
-                thumbnail: 'https://filedn.eu/l/c3zc6r33wxrep57/wune_guide_part_5.png',
-                fallback: 'https://img.youtube.com/vi/netZV1XoLMM/mqdefault.jpg'
-            }
+            {id: 'zuTh6qZ2574', title: '📖 Wune Guide Part 1', description: 'Complete beginner guide!', thumbnail: 'https://filedn.eu/l/8d4i0b1av13aiqi/wune_guide_part_1.png', fallback: 'https://img.youtube.com/vi/zuTh6qZ2574/mqdefault.jpg'},
+            {id: 'T6ahofjH4d0', title: '📖 Wune Guide Part 2', description: 'Advanced techniques - Part 2!', thumbnail: 'https://filedn.eu/l/196bi31f3fixtbb/wune_guide_part_2.png', fallback: 'https://img.youtube.com/vi/T6ahofjH4d0/mqdefault.jpg'},
+            {id: 'OaNPAEHxTp8', title: '📖 Wune Guide Part 3', description: 'Master strategies - Part 3!', thumbnail: 'https://filedn.eu/l/8d4i0b1av13aiqi/wune_guide_part_3.png', fallback: 'https://img.youtube.com/vi/OaNPAEHxTp8/mqdefault.jpg'},
+            {id: '1ok381bWmk8', title: '📖 Wune Guide Part 4', description: 'Pro tips & secrets!', thumbnail: 'https://filedn.eu/l/82h0zc33xz67zmy/WUNE_GUIDE_PART_4.png', fallback: 'https://img.youtube.com/vi/1ok381bWmk8/mqdefault.jpg'},
+            {id: 'netZV1XoLMM', title: '📖 Wune Guide Part 5 (Final)', description: 'Ultimate guide complete!', thumbnail: 'https://filedn.eu/l/c3zc6r33wxrep57/wune_guide_part_5.png', fallback: 'https://img.youtube.com/vi/netZV1XoLMM/mqdefault.jpg'}
         ];
 
         function displayVideos() {
@@ -177,20 +175,27 @@
                 const card = document.createElement('div');
                 card.className = 'video-card';
                 card.innerHTML = `
-                    <img src="${video.thumbnail}" 
-                         onerror="this.src='${video.fallback}'; this.onerror=null;" 
+                    <img src="${video.thumbnail}" onerror="this.src='${video.fallback}';this.onerror=null;" 
                          alt="${video.title}" class="video-thumbnail" loading="lazy">
                     <div class="video-info">
                         <h3 class="video-title">${video.title}</h3>
                         <p class="video-desc">${video.description}</p>
-                        <a href="https://youtube.com/watch?v=${video.id}" 
-                           class="btn youtube-btn" target="_blank" 
-                           style="width: 100%; justify-content: center;">
+                        <a href="https://youtube.com/watch?v=${video.id}" class="btn youtube-btn" 
+                           target="_blank" style="width:100%;justify-content:center;">
                             Watch Now ▶
                         </a>
                     </div>
                 `;
                 grid.appendChild(card);
+            });
+        }
+
+        // GCASH COPY FUNCTION
+        function copyGcash(number) {
+            navigator.clipboard.writeText(number).then(() => {
+                alert('✅ GCash #' + number + ' copied!\nOpen GCash → Send Money → Paste number');
+            }).catch(() => {
+                prompt('Copy this GCash number:', number);
             });
         }
 
