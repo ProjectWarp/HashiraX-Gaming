@@ -3,329 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wune Guide - Complete Tutorial Series</title>
-    <script src="https://unpkg.com/@paypal/react-paypal-js@latest/dist/iife/paypal-js.min.js"></script>
+    <title>Wune Guide - Complete 5-Part Series</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; 
         }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { 
+            text-align: center; color: white; padding: 40px 0; background: rgba(0,0,0,0.3); 
+            border-radius: 20px; margin-bottom: 40px; backdrop-filter: blur(10px); 
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        h1 { font-size: 3em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .subtitle { font-size: 1.2em; opacity: 0.9; }
+        .social-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 30px 0; }
+        .btn { 
+            padding: 15px 30px; font-size: 1.1em; font-weight: bold; border: none; border-radius: 50px; 
+            cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-flex; 
+            align-items: center; gap: 10px; box-shadow: 0 8px 25px rgba(0,0,0,0.3); 
         }
-
-        header {
-            text-align: center;
-            color: white;
-            padding: 40px 0;
-            background: rgba(0,0,0,0.3);
-            border-radius: 20px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(10px);
+        .youtube-btn { background: #FF0000; color: white; }
+        .youtube-btn:hover { background: #CC0000; transform: translateY(-3px); box-shadow: 0 12px 35px rgba(255,0,0,0.4); }
+        .tiktok-btn { background: linear-gradient(45deg, #000000, #ff0050); color: white; }
+        .tiktok-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(255,0,80,0.4); }
+        .facebook-btn { background: #1877F2; color: white; }
+        .facebook-btn:hover { background: #166FE5; transform: translateY(-3px); box-shadow: 0 12px 35px rgba(24,119,242,0.4); }
+        /* DIRECT PAYPAL SEND */
+        .paypal-send { 
+            background: linear-gradient(45deg, #003087, #0070ba) !important; 
+            color: white !important; font-size: 1.2em !important; padding: 20px 40px !important; 
         }
-
-        h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        .paypal-send:hover { 
+            transform: translateY(-5px) !important; box-shadow: 0 15px 40px rgba(0,48,135,0.6) !important; 
         }
-
-        .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
+        .videos-section { 
+            background: rgba(255,255,255,0.95); border-radius: 20px; padding: 40px; margin-bottom: 40px; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2); backdrop-filter: blur(10px); 
         }
-
-        .social-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin: 30px 0;
+        .section-title { font-size: 2.5em; text-align: center; margin-bottom: 40px; color: #333; }
+        .videos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .video-card { 
+            background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); 
+            transition: all 0.3s ease; 
         }
-
-        .btn {
-            padding: 15px 30px;
-            font-size: 1.1em;
-            font-weight: bold;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        .video-card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        .video-thumbnail { width: 100%; height: 200px; object-fit: cover; }
+        .video-info { padding: 20px; }
+        .video-title { font-size: 1.3em; font-weight: bold; margin-bottom: 10px; color: #333; }
+        .video-desc { color: #666; font-size: 0.95em; margin-bottom: 15px; }
+        .support-section { 
+            background: linear-gradient(135deg, #ff6b6b, #feca57); border-radius: 20px; padding: 40px; 
+            text-align: center; color: white; box-shadow: 0 20px 60px rgba(0,0,0,0.2); 
         }
-
-        .youtube-btn {
-            background: #FF0000;
-            color: white;
+        .support-title { font-size: 2.5em; margin-bottom: 20px; }
+        .tip-section { 
+            background: rgba(255,255,255,0.15); border-radius: 15px; padding: 25px; 
+            margin: 20px 0; backdrop-filter: blur(10px); 
         }
-
-        .youtube-btn:hover {
-            background: #CC0000;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(255,0,0,0.4);
+        @media (max-width: 768px) { 
+            h1 { font-size: 2em; } 
+            .social-buttons { flex-direction: column; align-items: center; } 
+            .btn { width: 100%; max-width: 300px; justify-content: center; } 
+            .videos-grid { grid-template-columns: 1fr; } 
         }
-
-        .tiktok-btn {
-            background: linear-gradient(45deg, #000000, #ff0050);
-            color: white;
-        }
-
-        .tiktok-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(255,0,80,0.4);
-        }
-
-        .facebook-btn {
-            background: #1877F2;
-            color: white;
-        }
-
-        .facebook-btn:hover {
-            background: #166FE5;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(24,119,242,0.4);
-        }
-
-        .videos-section {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
-        }
-
-        .section-title {
-            font-size: 2.5em;
-            text-align: center;
-            margin-bottom: 40px;
-            color: #333;
-        }
-
-        .videos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .video-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .video-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-        }
-
-        .video-thumbnail {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .video-info {
-            padding: 20px;
-        }
-
-        .video-title {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .video-desc {
-            color: #666;
-            font-size: 0.95em;
-            margin-bottom: 15px;
-        }
-
-        .support-section {
-            background: linear-gradient(135deg, #ff6b6b, #feca57);
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            color: white;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-        }
-
-        .support-title {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2em; }
-            .social-buttons { flex-direction: column; align-items: center; }
-            .btn { width: 100%; max-width: 300px; justify-content: center; }
-            .videos-grid { grid-template-columns: 1fr; }
-        }
-
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
+        .pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <h1>🎥 HashiraX Gaming </h1>
-            <p class="subtitle">Watch my latest videos and support my content creation!</p>
-                        
-            <!-- Social Follow Buttons - UPDATE THESE LINKS -->
+        <header>
+            <h1>📖 Wune Guide</h1>
+            <p class="subtitle">Complete 5-Part Masterclass - Beginner to Pro!</p>
+            
+            <!-- UPDATE YOUR SOCIAL LINKS -->
             <div class="social-buttons">
                 <a href="https://youtube.com/@HashiraXGaming?sub_confirmation=1" 
-                   class="btn youtube-btn pulse" 
-                   target="_blank">
-                    📺 Subscribe to YouTube
+                   class="btn youtube-btn pulse" target="_blank">
+                    📺 Subscribe YouTube
                 </a>
                 <a href="https://tiktok.com/@hashiraxgaming" 
-                   class="btn tiktok-btn" 
-                   target="_blank">
-                    🎵 Follow on TikTok
+                   class="btn tiktok-btn" target="_blank">
+                    🎵 TikTok
                 </a>
                 <a href="https://facebook.com/hashiraxgaming" 
-                   class="btn facebook-btn" 
-                   target="_blank">
-                    💙 Follow on Facebook
+                   class="btn facebook-btn" target="_blank">
+                    💙 Facebook
                 </a>
             </div>
         </header>
 
-        <!-- Videos Section -->
         <section class="videos-section">
-            <h2 class="section-title">🎥 Complete Wune Guide Series</h2>
+            <h2 class="section-title">🎥 Wune Guide Series (5 Parts)</h2>
             <div class="videos-grid" id="videosGrid"></div>
         </section>
 
-        <!-- Support Section -->
+        <!-- DIRECT PAYPAL SEND MONEY -->
         <section class="support-section">
-            <h2 class="support-title">💖 Support the Wune Guide</h2>
-            <p style="font-size: 1.2em; margin-bottom: 30px;">
-                Loved the guide? Buy me a coffee to make more tutorials! ☕
-            </p>
-            <div id="paypal-button-container"></div>
+            <h2 class="support-title">💖 Quick Tip?</h2>
+            <div class="tip-section">
+                <p style="font-size: 1.1em; margin-bottom: 25px;">
+                    Loved the guide? Send a tip via PayPal! 
+                    <strong>Any amount helps! 🙏</strong>
+                </p>
+                
+                <!-- REPLACE yourpaypal@email.com WITH YOUR EMAIL -->
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://www.paypal.com/paypalme/demonlordstream/5" 
+                       class="btn paypal-send pulse" target="_blank">
+                        ☕ $5 Tip
+                    </a>
+                    <a href="https://www.paypal.com/paypalme/demonlordstream/10" 
+                       class="btn paypal-send" target="_blank">
+                        💰 $10 Tip
+                    </a>
+                    <a href="https://www.paypal.com/paypalme/demonlordstream/20" 
+                       class="btn paypal-send" target="_blank">
+                        🚀 $20 Tip
+                    </a>
+                </div>
+                
+                <p style="font-size: 0.9em; opacity: 0.9; margin-top: 20px;">
+                    Or send any amount → paypal.me/yourpaypal
+                </p>
+            </div>
         </section>
     </div>
 
     <script>
-        // 🔥 FINAL VERSION - YOUR WUNE GUIDE VIDEOS WITH MEDIAFIRE THUMBNAILS
         const MANUAL_VIDEOS = [
             {
-                id: 'zuTh6qZ2574',  // ← REPLACE WITH YOUR ACTUAL VIDEO ID
+                id: 'zuTh6qZ2574',
                 title: '📖 Wune Guide Part 1',
                 description: 'Complete beginner guide to Wune - Part 1!',
-                thumbnail: 'https://img.youtube.com/vi/zuTh6qZ2574/mqdefault.jpg'
+                thumbnail: 'https://filedn.eu/l/8d4i0b1av13aiqi/wune_guide_part_1.png',
+                fallback: 'https://img.youtube.com/vi/zuTh6qZ2574/mqdefault.jpg'
             },
             {
-                id: 'T6ahofjH4d0',  // ← REPLACE WITH YOUR ACTUAL VIDEO ID
+                id: 'T6ahofjH4d0',
                 title: '📖 Wune Guide Part 2', 
                 description: 'Advanced techniques - Part 2 of 5!',
-                thumbnail: 'https://img.youtube.com/vi/T6ahofjH4d0/mqdefault.jpg'
+                thumbnail: 'https://filedn.eu/l/196bi31f3fixtbb/wune_guide_part_2.png',
+                fallback: 'https://img.youtube.com/vi/T6ahofjH4d0/mqdefault.jpg'
             },
             {
-                id: 'OaNPAEHxTp8',  // ← REPLACE WITH YOUR ACTUAL VIDEO ID
+                id: 'OaNPAEHxTp8',
                 title: '📖 Wune Guide Part 3',
                 description: 'Master level strategies - Part 3!',
-                thumbnail: 'https://img.youtube.com/vi/OaNPAEHxTp8/mqdefault.jpg'
+                thumbnail: 'https://filedn.eu/l/8d4i0b1av13aiqi/wune_guide_part_3.png',
+                fallback: 'https://img.youtube.com/vi/OaNPAEHxTp8/mqdefault.jpg'
             },
             {
-                id: '1ok381bWmk8',  // ← REPLACE WITH YOUR ACTUAL VIDEO ID
+                id: '1ok381bWmk8',
                 title: '📖 Wune Guide Part 4',
                 description: 'Pro tips and secrets - Part 4!',
-                thumbnail: 'https://img.youtube.com/vi/1ok381bWmk8/mqdefault.jpg'
+                thumbnail: 'https://filedn.eu/l/82h0zc33xz67zmy/WUNE_GUIDE_PART_4.png',
+                fallback: 'https://img.youtube.com/vi/1ok381bWmk8/mqdefault.jpg'
             },
             {
-                id: 'netZV1XoLMM',  // ← REPLACE WITH YOUR ACTUAL VIDEO ID
+                id: 'netZV1XoLMM',
                 title: '📖 Wune Guide Part 5 (Final)',
                 description: 'Ultimate guide complete - Part 5!',
-                thumbnail: 'https://img.youtube.com/vi/netZV1XoLMM/mqdefault.jpg'
+                thumbnail: 'https://filedn.eu/l/c3zc6r33wxrep57/wune_guide_part_5.png',
+                fallback: 'https://img.youtube.com/vi/netZV1XoLMM/mqdefault.jpg'
             }
         ];
 
-        // Display videos
-        function displayManualVideos() {
+        function displayVideos() {
             const grid = document.getElementById('videosGrid');
             grid.innerHTML = '';
-
             MANUAL_VIDEOS.forEach(video => {
-                const videoCard = createVideoCard(video);
-                grid.appendChild(videoCard);
+                const card = document.createElement('div');
+                card.className = 'video-card';
+                card.innerHTML = `
+                    <img src="${video.thumbnail}" 
+                         onerror="this.src='${video.fallback}'; this.onerror=null;" 
+                         alt="${video.title}" class="video-thumbnail" loading="lazy">
+                    <div class="video-info">
+                        <h3 class="video-title">${video.title}</h3>
+                        <p class="video-desc">${video.description}</p>
+                        <a href="https://youtube.com/watch?v=${video.id}" 
+                           class="btn youtube-btn" target="_blank" 
+                           style="width: 100%; justify-content: center;">
+                            Watch Now ▶
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
             });
         }
 
-        function createVideoCard(video) {
-            const card = document.createElement('div');
-            card.className = 'video-card';
-            
-            card.innerHTML = `
-                <img src="${video.thumbnail}" alt="${video.title}" class="video-thumbnail" loading="lazy">
-                <div class="video-info">
-                    <h3 class="video-title">${video.title}</h3>
-                    <p class="video-desc">${video.description}</p>
-                    <a href="https://youtube.com/watch?v=${video.id}" 
-                       class="btn youtube-btn" 
-                       target="_blank" 
-                       style="width: 100%; justify-content: center;">
-                        Watch Now ▶
-                    </a>
-                </div>
-            `;
-            return card;
-        }
-
-        // PayPal Button
-        function initPayPalButton() {
-            paypal.Buttons({
-                createOrder: function(data, actions) {
-                    return actions.order.create({
-                        purchase_units: [{
-                            amount: { value: '5.00' }
-                        }]
-                    });
-                },
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        alert('Thank you ' + details.payer.name.given_name + '! Your support means everything! 🙏');
-                    });
-                },
-                onError: function(err) {
-                    alert('Payment failed. Please try again.');
-                }
-            }).render('#paypal-button-container');
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            displayManualVideos();
-            setTimeout(initPayPalButton, 1000);
-        });
+        document.addEventListener('DOMContentLoaded', displayVideos);
     </script>
 </body>
 </html>
